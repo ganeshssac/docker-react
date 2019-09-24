@@ -7,3 +7,16 @@ before_install:
 
 script:
   - docker run ganeshssac/docker-react npm run test -- --coverage
+
+deploy:
+  provider: elasticbeanstalk
+  region: "eu-west-2"
+  app: "dockerreactjs" #name of the elastic beanstalk name
+  env: "Dockerreactjs-env" # check EBS configuration name to update
+  bucket_name: "elasticbeanstalk-eu-west-2-312497702165" # define a name for S3bucket, this can be found on the S3 bucket - travis CI will put the entire code from github
+  bucket_path: "dockerreactjs"  # this is same as app variable name
+  on:
+    branch: master
+    access_key_id: $AWS_ACCESS_KEY
+    secret_access_key:
+      secure: "$AWS_SECRET_KEY"
