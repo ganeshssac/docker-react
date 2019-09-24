@@ -3,12 +3,15 @@ services:
   - docker
 
 language: node_js
+node_js:
+  - "stable"
 
 before_install:
-  - docker build  -t ganeshssac/docker-react -f Dockerfile.dev . 
+  #- docker build  -t ganeshssac/docker-react -f Dockerfile.dev . 
 
 script:
   #- docker run ganeshssac/docker-react npm run test -- --coverage
+
 
 deploy:
   provider: elasticbeanstalk
