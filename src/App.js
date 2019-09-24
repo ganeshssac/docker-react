@@ -9,6 +9,9 @@ function App() {
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.js</code> and save to reload.
+          Hi there Ganesh, learn reactjs <code>src/App.js</code> and save to reload.
+          <p>Hi Dharshan - Good night. </p>
+          <p> Hi Deeksha - Good night. See you tommorow, Deeksha </p>
         </p>
         <a
           className="App-link"

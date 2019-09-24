@@ -1,0 +1,19 @@
+version: '3'
+services:
+  react-app: # run a react-app client container 
+    build: 
+      context: .  # represent current working directory for the build. 
+      dockerfile: Dockerfile.dev # dockerfile.dev is used to build an image
+    ports:
+      - "3000:3000" #  port mapping allows local machine port 3000 to connect to the container port 3000.  eg. (3000:3000 or 4000:3000)
+    volumes:
+      - /app/node_modules # volume mapping allows to reference the internal dependency node-modules within the conatainer.
+      - .:/app  # volume mapping allows to reference the local machine directory to the container directory (eg., dot represent the current working directory mapped to container directory :/app)
+  tests: # run a separate container service to test docker containers
+    build: 
+      context: .
+      dockerfile: Dockerfile.dev
+    volumes:
+      - /app/node_modules
+      - .:/app
+    command: ["npm", "run", "test"]
